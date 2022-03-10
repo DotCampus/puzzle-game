@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+ul.puzzle {
+    display: flex;
+    min-width: 400px;
+    min-height: 400px;
+    flex-wrap: wrap;
+    padding: 1rem;
+    border-radius: 7px;
+}
+
+ul.puzzle li {
+    list-style: none;
+    text-align: center;
+    padding: 10px 20px;
+    width: 120px;
+    font-size: 3.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+}
+
+ul.puzzle li.tile {
+    border: 10px outset #ccc;
+    background-color: #fff;
+}
+
+ul.puzzle li.blank-tile {
+    border: 10px outset #000;
+    background-color: #000;
+    visibility: hidden;
+}

@@ -1,0 +1,28 @@
+{
+  "name": "dot-campus-website",
+  "version": "1.0.0",
+  "description": "Dot Campus Website",
+  "main": "index.js",
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./src/input.css -o ./public/index.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DotCampus/dot-campus-website.git"
+  },
+  "keywords": [
+    "DotCampus",
+    "Community",
+    "Tech"
+  ],
+  "author": "Theo Okafor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DotCampus/dot-campus-website/issues"
+  },
+  "homepage": "https://github.com/DotCampus/dot-campus-website#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.0.23"
+  }
+}

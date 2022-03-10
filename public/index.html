@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <!-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Dot Campus is a close-nit community of tech enthusiast and professionals. 
+      We offering high quality mentorship and support for young African tech talents." />
+  <link href="index.css" rel="stylesheet">
+  <!-- <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" /> -->
+  <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+  <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
+  <title>Puzzle - Dot Campus</title>
+</head>
+
+<body
+  class="flex bg-[url('assets/hero-background.jpg')] backdrop-blur-sm backdrop-brightness-50 bg-cover bg-no-repeat"
+  style="min-height: 100vh"
+  >
+  <!-- background image by Marvin Meyer on Unsplash -->
+
+
+
+  <div class="flex flex-col w-full my-auto">
+    <div class="flex justify-center items-center">
+      <div class="">
+        <ul class="puzzle bg-dark-blue">
+
+        </ul>
+        <div class="flex justify-between mt-3">
+          <button class="bg-dark-blue p-3 text-white rounded-lg" id="restart">Restart</button>
+          <button class="p-3 text-dark-blue rounded-lg border-2 border-dark-blue" id="solve">Solve</button>
+          <select name="difficulty" id="difficulty" class="p-3 text-white bg-dark-blue rounded-lg">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+            <option value="harder">Very Hard</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+    -->
+  <script src="index.js"></script>
+</body>
+
+</html>
