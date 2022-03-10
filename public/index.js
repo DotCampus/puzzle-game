@@ -129,8 +129,8 @@ class Puzzle {
   }
 }
 
-const choseDifficultySelect = document.querySelector('select#difficulty');
-choseDifficultySelect.addEventListener('change', (event) => {
+const difficultySelect = document.querySelector('select#difficulty');
+difficultySelect.addEventListener('change', (event) => {
     const difficulties = {
         easy: 8,
         medium: 15,
