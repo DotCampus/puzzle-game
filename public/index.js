@@ -9,6 +9,40 @@ class Puzzle {
     this.currentArrangement = [...this.initialArrangement];
     const blankTileID = allTilesPlusBlank;
     let blankTilePosition = blankTileID - 1; // initially the last item
+    let hasBeenSolved = false;
+    const winningTimeout = 3000;
+
+    const showAlert = (message) => {
+      return alert(message);
+    };
+
+    const releaseConfetti = () => {
+      const jsConfetti = new JSConfetti();
+        jsConfetti.addConfetti();
+        setTimeout(() => {
+          jsConfetti.addConfetti();
+        }, 1000);
+        setTimeout(() => {
+          jsConfetti.addConfetti();
+        }, winningTimeout);
+    }
+
+    const playWinningApplause = () => {
+      const sound = new Howl({
+        src: ['assets/applause1.mp3']
+      });
+      
+      const sound1 = sound.play();
+      sound.fade(1, 0, winningTimeout * 2, sound1);
+    };
+
+    const playTileMovementSound = () => {
+      const sound = new Howl({
+        src: ['assets/button_click1.mp3']
+      });
+      
+      sound.play();
+    }
 
     /**
      * @description swaps the tile at the tilePosition with the blank tile.
@@ -23,7 +57,20 @@ class Puzzle {
       blankTilePosition = tilePosition;
     };
 
+    const isSolved = () => {
+      for(let i = 0; i < this.currentArrangement.length; i += 1) {
+        if (this.currentArrangement[i] !== this.initialArrangement[i]) {
+          return false;
+        };
+      }
+      return true;
+    }
+
     const moveTile = (currentTilePosition) => {
+      if (hasBeenSolved) { 
+        return showAlert('Please restart the game');
+      }
+
       /**
        * @description This checks whether the tile is at the left edge.
        *
@@ -54,6 +101,17 @@ class Puzzle {
         blankAtTheBottom // is blank at the bottom of the current tile
       ) {
         swapTiles(currentTilePosition);
+        playTileMovementSound();
+      }
+      
+      if (isSolved()) {
+        // confetti
+        releaseConfetti();
+
+        // applause
+        playWinningApplause();
+
+        hasBeenSolved = true;
       }
       return '';
     };
@@ -99,7 +157,7 @@ class Puzzle {
     /**
      * @description shuffles the tiles
      */
-    const disOrderTiles = () => {
+    const shuffleTiles = () => {
       this.currentArrangement.forEach((item, currentIndex) => {
         // Pick a remaining element...
         const randomIndex = Math.floor(Math.random() * currentIndex);
@@ -113,6 +171,7 @@ class Puzzle {
           this.currentArrangement[currentIndex],
         ];
       });
+      hasBeenSolved = false;
       renderTiles(this.currentArrangement);
     };
 
@@ -123,8 +182,8 @@ class Puzzle {
       const restartButton = document.querySelector('button#restart');
       const solveButton = document.querySelector('button#solve');
       solveButton.addEventListener('click', () => renderTiles(this.initialArrangement));
-      restartButton.addEventListener('click', disOrderTiles);
-      disOrderTiles();
+      restartButton.addEventListener('click', shuffleTiles);
+      shuffleTiles();
     };
   }
 }
